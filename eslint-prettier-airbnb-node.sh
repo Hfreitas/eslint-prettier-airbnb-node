@@ -136,7 +136,7 @@ else
   ],
   "extends": [
     "airbnb-base",
-    "plugin:prettier/recommended",
+    "plugin:prettier/recommended"
   ],
   "env": {
     "browser": true,
