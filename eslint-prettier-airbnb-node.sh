@@ -180,4 +180,4 @@ fi
 
 echo
 echo -e "${GREEN}Finished setting up!${NC}"
-echor
+echo
