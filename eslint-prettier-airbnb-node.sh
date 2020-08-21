@@ -49,7 +49,7 @@ done
 echo
 
 # Checks for existing eslintrc files
-if [ -f ".eslintrc.js" -o -f ".eslintrc.yaml" -o -f ".eslintrc.yml" -o -f ".eslintrc.json" -o -f ".eslintrc" ]; then
+if [ -f ".eslintrc.js" ] || [ -f ".eslintrc.yaml" ] || [ -f ".eslintrc.yml" ] || [ -f ".eslintrc.json" ] || [ -f ".eslintrc" ]; then
   echo -e "${RED}Existing ESLint config file(s) found:${NC}"
   find . -maxdepth 1 -name '.eslint*' -print0 | xargs -n 1 basename
   echo
