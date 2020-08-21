@@ -51,7 +51,7 @@ echo
 # Checks for existing eslintrc files
 if [ -f ".eslintrc.js" -o -f ".eslintrc.yaml" -o -f ".eslintrc.yml" -o -f ".eslintrc.json" -o -f ".eslintrc" ]; then
   echo -e "${RED}Existing ESLint config file(s) found:${NC}"
-  ls -a .eslint* | xargs -n 1 basename
+  find . -maxdepth 1 -name '.eslint*' -print0 | xargs -n 1 basename
   echo
   echo -e "${RED}CAUTION:${NC} there is loading priority when more than one config file is present: https://eslint.org/docs/user-guide/configuring#configuration-file-formats"
   echo
@@ -94,7 +94,7 @@ if [ -f ".prettierrc.js" -o -f "prettier.config.js" -o -f ".prettierrc.yaml" -o 
   echo
   echo -e "${RED}CAUTION:${NC} The configuration file will be resolved starting from the location of the file being formatted, and searching up the file tree until a config file is (or isn't) found. https://prettier.io/docs/en/configuration.html"
   echo
-  read -p "Write .prettierrc${config_extension} (Y/n)? "
+  read -rp "Write .prettierrc${config_extension} (Y/n)? "
   if [[ $REPLY =~ ^[Nn]$ ]]; then
     echo -e "${YELLOW}>>>>> Skipping Prettier config${NC}"
     skip_prettier_setup="true"
