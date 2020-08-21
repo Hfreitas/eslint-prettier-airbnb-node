@@ -88,7 +88,7 @@ done
 echo
 
 # Checks for existing prettierrc files
-if [ -f ".prettierrc.js" -o -f "prettier.config.js" -o -f ".prettierrc.yaml" -o -f ".prettierrc.yml" -o -f ".prettierrc.json" -o -f ".prettierrc.toml" -o -f ".prettierrc" ]; then
+if [ -f ".prettierrc.js" ] || [ -f "prettier.config.js" ] || [ -f ".prettierrc.yaml" ] || [ -f ".prettierrc.yml" ] ||  [-f ".prettierrc.json" ] || [ -f ".prettierrc.toml" ] ||  [ -f ".prettierrc" ]; then
   echo -e "${RED}Existing Prettier config file(s) found${NC}"
   ls -a | grep "prettier*" | xargs -n 1 basename
   echo
