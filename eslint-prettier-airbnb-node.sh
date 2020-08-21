@@ -90,7 +90,7 @@ echo
 # Checks for existing prettierrc files
 if [ -f ".prettierrc.js" ] || [ -f "prettier.config.js" ] || [ -f ".prettierrc.yaml" ] || [ -f ".prettierrc.yml" ] ||  [-f ".prettierrc.json" ] || [ -f ".prettierrc.toml" ] ||  [ -f ".prettierrc" ]; then
   echo -e "${RED}Existing Prettier config file(s) found${NC}"
-  ls -a | grep "prettier*" | xargs -n 1 basename
+  find . -maxdepth 1 -name '*prettier*' -print0 | xargs -n 1 basename
   echo
   echo -e "${RED}CAUTION:${NC} The configuration file will be resolved starting from the location of the file being formatted, and searching up the file tree until a config file is (or isn't) found. https://prettier.io/docs/en/configuration.html"
   echo
