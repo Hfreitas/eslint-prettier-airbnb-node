@@ -88,7 +88,7 @@ done
 echo
 
 # Checks for existing prettierrc files
-if [ -f ".prettierrc.js" ] || [ -f "prettier.config.js" ] || [ -f ".prettierrc.yaml" ] || [ -f ".prettierrc.yml" ] ||  [-f ".prettierrc.json" ] || [ -f ".prettierrc.toml" ] ||  [ -f ".prettierrc" ]; then
+if [ -f ".prettierrc.js" ] || [ -f "prettier.config.js" ] || [ -f ".prettierrc.yaml" ] || [ -f ".prettierrc.yml" ] ||  [ -f ".prettierrc.json" ] || [ -f ".prettierrc.toml" ] ||  [ -f ".prettierrc" ]; then
   echo -e "${RED}Existing Prettier config file(s) found${NC}"
   find . -maxdepth 1 -name '*prettier*' -print0 | xargs -n 1 basename
   echo
@@ -166,9 +166,7 @@ fi
 if [ "$skip_prettier_setup" == "true" ]; then
   return
 else
-  echo -e "5/5 ${YELLOW}Building your .prettierrc${config_extension} file... ${NC}"
-  >.prettierrc${config_extension} # truncates existing file (or creates empty)
-
+  echo -e "5/5 ${YELLOW}Building your .prettierrc${config_extension} file... ${NC}" > .prettierrc${config_extension} # truncates existing file (or creates empty)
   echo ${config_opening}'
   "printWidth": '${max_len_val}',
   "singleQuote": true,
