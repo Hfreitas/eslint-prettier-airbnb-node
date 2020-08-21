@@ -124,12 +124,10 @@ echo
 $pkg_cmd -D eslint-config-prettier eslint-plugin-prettier
 
 if [ "$skip_eslint_setup" == "true" ]; then
-  break
+  return
 else
   echo
-  echo -e "4/5 ${YELLOW}Building your .eslintrc${config_extension} file...${NC}"
-  >".eslintrc${config_extension}" # truncates existing file (or creates empty)
-
+  echo -e "4/5 ${YELLOW}Building your .eslintrc${config_extension} file...${NC}" > ".eslintrc${config_extension}" # truncates existing file (or creates empty)
   echo ${config_opening}'
   "plugins": [
     "prettier"
