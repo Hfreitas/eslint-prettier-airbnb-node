@@ -51,7 +51,7 @@ echo
 # Checks for existing eslintrc files
 if [ -f ".eslintrc.js" ] || [ -f ".eslintrc.yaml" ] || [ -f ".eslintrc.yml" ] || [ -f ".eslintrc.json" ] || [ -f ".eslintrc" ]; then
   echo -e "${RED}Existing ESLint config file(s) found:${NC}"
-  find . -maxdepth 1 -name '.eslint*' -print0 | xargs -n 1 basename
+  find . -maxdepth 1 -name ".eslint" -print0 | xargs -n 1 basename
   echo
   echo -e "${RED}CAUTION:${NC} there is loading priority when more than one config file is present: https://eslint.org/docs/user-guide/configuring#configuration-file-formats"
   echo
@@ -90,7 +90,7 @@ echo
 # Checks for existing prettierrc files
 if [ -f ".prettierrc.js" ] || [ -f "prettier.config.js" ] || [ -f ".prettierrc.yaml" ] || [ -f ".prettierrc.yml" ] ||  [ -f ".prettierrc.json" ] || [ -f ".prettierrc.toml" ] ||  [ -f ".prettierrc" ]; then
   echo -e "${RED}Existing Prettier config file(s) found${NC}"
-  find . -maxdepth 1 -name '*prettier*' -print0 | xargs -n 1 basename
+  find . -maxdepth 1 -name "*prettier*" -print0 | xargs -n 1 basename
   echo
   echo -e "${RED}CAUTION:${NC} The configuration file will be resolved starting from the location of the file being formatted, and searching up the file tree until a config file is (or isn't) found. https://prettier.io/docs/en/configuration.html"
   echo
@@ -127,7 +127,8 @@ if [ "$skip_eslint_setup" == "true" ]; then
   return
 else
   echo
-  echo -e "4/5 ${YELLOW}Building your .eslintrc${config_extension} file...${NC}" > ".eslintrc${config_extension}" # truncates existing file (or creates empty)
+  echo -e "4/5 ${YELLOW}Building your .eslintrc${config_extension} file...${NC}" 
+  true > ".eslintrc${config_extension}" # truncates existing file (or creates empty)
   echo ${config_opening}'
   "plugins": [
     "prettier"
@@ -166,7 +167,8 @@ fi
 if [ "$skip_prettier_setup" == "true" ]; then
   return
 else
-  echo -e "5/5 ${YELLOW}Building your .prettierrc${config_extension} file... ${NC}" > .prettierrc${config_extension} # truncates existing file (or creates empty)
+  echo -e "5/5 ${YELLOW}Building your .prettierrc${config_extension} file... ${NC}" 
+  true > .prettierrc${config_extension} # truncates existing file (or creates empty)
   echo ${config_opening}'
   "printWidth": '${max_len_val}',
   "singleQuote": true,
