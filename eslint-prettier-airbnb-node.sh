@@ -55,7 +55,7 @@ if [ -f ".eslintrc.js" ] || [ -f ".eslintrc.yaml" ] || [ -f ".eslintrc.yml" ] ||
   echo
   echo -e "${RED}CAUTION:${NC} there is loading priority when more than one config file is present: https://eslint.org/docs/user-guide/configuring#configuration-file-formats"
   echo
-  read -p "Write .eslintrc${config_extension} (Y/n)? "
+  read -rp "Write .eslintrc${config_extension} (Y/n)? "
   if [[ $REPLY =~ ^[Nn]$ ]]; then
     echo -e "${YELLOW}>>>>> Skipping ESLint config${NC}"
     skip_eslint_setup="true"
